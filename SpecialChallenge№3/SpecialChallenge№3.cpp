@@ -30,7 +30,10 @@ void getBMP(const char* fname) {
     size_t res;
 
     res = fread(&bh, 1, sizeof(bh), screen);
-    if (res != sizeof(BMPheader)) { fclose(screen); std::cout << "ФАйл не тот";; }
+    if (res != sizeof(BMPheader)) { 
+        fclose(screen); 
+        std::cout << "Не BMP файл"; 
+    }
 
     fseek(screen, 18, SEEK_SET);
     fread(&bh.biWidth, sizeof(LONG), 1, screen);
